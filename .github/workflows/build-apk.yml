@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: build-apk-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,25 +46,36 @@ jobs:
 
       - name: 构建 debug APK
         working-directory: android
-        run: gradle assembleDebug --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          mkdir -p ../dist
+          gradle assembleDebug --no-daemon --stacktrace 2>&1 | tee ../dist/build.log
 
       - name: 归档
+        if: always()
         run: |
           mkdir -p dist
-          cp android/app/build/outputs/apk/debug/*.apk dist/haijiao-shell.apk
+          if ls android/app/build/outputs/apk/debug/*.apk >/dev/null 2>&1; then
+            cp android/app/build/outputs/apk/debug/*.apk dist/haijiao-shell.apk
+            sha256sum dist/haijiao-shell.apk | tee dist/haijiao-shell.apk.sha256
+          fi
           ls -la dist
-          sha256sum dist/haijiao-shell.apk
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: haijiao-shell-apk
-          path: dist/haijiao-shell.apk
-          if-no-files-found: error
+          path: |
+            dist/haijiao-shell.apk
+            dist/build.log
+          if-no-files-found: warn
 
-      - name: 把 APK 提交回分支（方便无 token 取回）
+      - name: 回传产物与构建日志（方便无 token 取回）
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f dist/haijiao-shell.apk
-          git commit -m "build: apk $(date -u +%Y%m%d-%H%M%S) [skip ci]" || echo "no change"
-          git push
+          git add -f dist/haijiao-shell.apk dist/build.log dist/haijiao-shell.apk.sha256 2>/dev/null || true
+          git commit -m "build: $(date -u +%Y%m%d-%H%M%S) 结论=${{ job.status }} [skip ci]" || echo "no change"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+          git push || echo "push skipped"
