@@ -1,0 +1,22 @@
+== KVM ==
+crw-rw---- 1 root kvm 10, 232 Oct 13 19:02 /dev/kvm
+== sdkmanager ==
+== 安装系统镜像 ==
+yes: standard output: Broken pipe
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 8: sdkmanager: command not found
+== 创建 AVD ==
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 10: avdmanager: command not found
+== 启动模拟器 ==
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 14: adb: command not found
+boot_completed=
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 21: adb: command not found
+== 装机 ==
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 24: adb: command not found
+== 启动 ==
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 26: adb: command not found
+== 截图/日志 ==
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 29: adb: command not found
+/home/runner/work/_temp/a59dc398-4de9-429f-b2d1-6e1d98534cd4.sh: line 30: adb: command not found
+== hj-shell ==
+== 页面 ==
+== 崩溃 ==
