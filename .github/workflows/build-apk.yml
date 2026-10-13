@@ -70,12 +70,38 @@ jobs:
             dist/build.log
           if-no-files-found: warn
 
+      - name: 模拟器冒烟测试（装机 + 启动 + 截图 + 日志）
+        if: always()
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: |
+            set +e
+            adb logcat -c || true
+            adb install -r dist/haijiao-shell.apk 2>&1 | tee dist/smoke-install.txt
+            adb shell am start -n com.haijiao.shell/.MainActivity 2>&1 | tee dist/smoke-start.txt
+            sleep 60
+            adb exec-out screencap -p > dist/smoke-screenshot.png || true
+            adb logcat -d -v time > dist/smoke-logcat.txt || true
+            echo "===== hj-shell 日志 ====="
+            grep -E "hj-shell" dist/smoke-logcat.txt | tail -40 || true
+            echo "===== 页面/脚本日志 ====="
+            grep -E "\[页面\]|海角" dist/smoke-logcat.txt | tail -30 || true
+            echo "===== 崩溃 ====="
+            grep -E "FATAL|AndroidRuntime|ANR" dist/smoke-logcat.txt | tail -20 || true
+            ls -la dist
+
       - name: 回传产物与构建日志（方便无 token 取回）
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f dist/haijiao-shell.apk dist/build.log dist/haijiao-shell.apk.sha256 2>/dev/null || true
+          git add -f dist/ 2>/dev/null || true
           git commit -m "build: $(date -u +%Y%m%d-%H%M%S) 结论=${{ job.status }} [skip ci]" || echo "no change"
           git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
           git push || echo "push skipped"
