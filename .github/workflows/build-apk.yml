@@ -76,24 +76,41 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          target: google_apis
+          target: default
           arch: x86_64
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          ram-size: 3072
+          heap-size: 512
+          cores: 2
+          force-avd-creation: true
+          emulator-boot-timeout: 900
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu swiftshader_indirect
           disable-animations: true
           script: |
             set +e
+            echo "== KVM =="; ls -l /dev/kvm || true
+            adb wait-for-device
+            for i in $(seq 1 60); do
+              b=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+              [ "$b" = "1" ] && break
+              sleep 5
+            done
+            echo "boot_completed=$(adb shell getprop sys.boot_completed | tr -d '\r')"
+            adb devices | tee dist/smoke-devices.txt
             adb logcat -c || true
-            adb install -r dist/haijiao-shell.apk 2>&1 | tee dist/smoke-install.txt
-            adb shell am start -n com.haijiao.shell/.MainActivity 2>&1 | tee dist/smoke-start.txt
-            sleep 60
+            for i in 1 2 3; do
+              adb install -r -t dist/haijiao-shell.apk 2>&1 | tee dist/smoke-install.txt && grep -q Success dist/smoke-install.txt && break
+              echo "install retry $i"; sleep 15
+            done
+            adb shell am start -W -n com.haijiao.shell/.MainActivity 2>&1 | tee dist/smoke-start.txt
+            sleep 75
             adb exec-out screencap -p > dist/smoke-screenshot.png || true
             adb logcat -d -v time > dist/smoke-logcat.txt || true
             echo "===== hj-shell 日志 ====="
-            grep -E "hj-shell" dist/smoke-logcat.txt | tail -40 || true
+            grep -aE "hj-shell" dist/smoke-logcat.txt | tail -40 || true
             echo "===== 页面/脚本日志 ====="
-            grep -E "\[页面\]|海角" dist/smoke-logcat.txt | tail -30 || true
+            grep -aE "\[页面\]|海角" dist/smoke-logcat.txt | tail -30 || true
             echo "===== 崩溃 ====="
-            grep -E "FATAL|AndroidRuntime|ANR" dist/smoke-logcat.txt | tail -20 || true
+            grep -aE "FATAL EXCEPTION|ANR in" dist/smoke-logcat.txt | tail -20 || true
             ls -la dist
 
       - name: 回传产物与构建日志（方便无 token 取回）
