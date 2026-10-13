@@ -1,0 +1,66 @@
+name: build-apk
+
+on:
+  push:
+    branches: [haijiao-shell-android]
+    paths-ignore:
+      - 'dist/**'
+      - '**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 环境信息
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          ls "$ANDROID_HOME/platforms" 2>/dev/null || true
+          ls "$ANDROID_HOME/build-tools" 2>/dev/null || true
+          java -version 2>&1 | head -3
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: 补齐 SDK 组件
+        run: |
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools" >/dev/null 2>&1 || true
+
+      - name: 构建 debug APK
+        working-directory: android
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: 归档
+        run: |
+          mkdir -p dist
+          cp android/app/build/outputs/apk/debug/*.apk dist/haijiao-shell.apk
+          ls -la dist
+          sha256sum dist/haijiao-shell.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: haijiao-shell-apk
+          path: dist/haijiao-shell.apk
+          if-no-files-found: error
+
+      - name: 把 APK 提交回分支（方便无 token 取回）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f dist/haijiao-shell.apk
+          git commit -m "build: apk $(date -u +%Y%m%d-%H%M%S) [skip ci]" || echo "no change"
+          git push
