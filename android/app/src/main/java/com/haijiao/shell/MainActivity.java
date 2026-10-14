@@ -187,6 +187,10 @@ public class MainActivity extends Activity {
         rootLayout.addView(customView, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         webView.setVisibility(View.GONE);
+        try {
+            android.app.ActionBar ab = getActionBar();
+            if (ab != null) ab.hide();     // 自己的标题栏也收起来，才是真全屏
+        } catch (Exception ignored) { }
         try { setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE); } catch (Exception ignored) { }
         applyImmersive(true);
         shellLog("进入全屏（宿主接管）");
@@ -197,6 +201,10 @@ public class MainActivity extends Activity {
         try { rootLayout.removeView(customView); } catch (Exception ignored) { }
         customView = null;
         webView.setVisibility(View.VISIBLE);
+        try {
+            android.app.ActionBar ab = getActionBar();
+            if (ab != null) ab.show();
+        } catch (Exception ignored) { }
         if (customViewCallback != null) {
             try { customViewCallback.onCustomViewHidden(); } catch (Exception ignored) { }
             customViewCallback = null;

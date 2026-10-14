@@ -133,10 +133,10 @@ jobs:
             timeout 30 adb shell input tap 310 812
             sleep 12
             timeout 60 adb exec-out screencap -p > dist/smoke-04-tap-fullscreen.png
-            echo "== 再点「网页全屏」（x≈435）=="
-            timeout 30 adb shell input tap 435 812
+            echo "== 再点一次「全屏」键退出全屏 =="
+            timeout 30 adb shell input tap 310 812
             sleep 12
-            timeout 60 adb exec-out screencap -p > dist/smoke-05-tap-webfs.png
+            timeout 60 adb exec-out screencap -p > dist/smoke-05-exit-fullscreen.png
             echo "== 全屏日志 =="
             timeout 60 adb logcat -d -v time > dist/smoke-logcat.txt
             grep -a "全屏" dist/smoke-logcat.txt | tail -10
