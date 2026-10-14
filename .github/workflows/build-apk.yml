@@ -129,14 +129,14 @@ jobs:
             timeout 60 adb shell am start -W -n com.haijiao.shell/.MainActivity --es url "https://www.w3schools.com/html/mov_bbb.mp4"
             sleep 45
             timeout 60 adb exec-out screencap -p > dist/smoke-03-mp4.png
-            echo "== 盲点工具条按钮（估算坐标，每次点完截图）=="
-            for pt in "950 300" "900 300" "1000 300"; do
-              set -- $pt
-              echo "-- tap $1 $2"
-              timeout 30 adb shell input tap $1 $2
-              sleep 10
-              timeout 60 adb exec-out screencap -p > "dist/smoke-04-tap-$1-$2.png"
-            done
+            echo "== 点「全屏」按钮（实测工具条在 y≈810，全屏键 x≈310）=="
+            timeout 30 adb shell input tap 310 812
+            sleep 12
+            timeout 60 adb exec-out screencap -p > dist/smoke-04-tap-fullscreen.png
+            echo "== 再点「网页全屏」（x≈435）=="
+            timeout 30 adb shell input tap 435 812
+            sleep 12
+            timeout 60 adb exec-out screencap -p > dist/smoke-05-tap-webfs.png
             echo "== 全屏日志 =="
             timeout 60 adb logcat -d -v time > dist/smoke-logcat.txt
             grep -a "全屏" dist/smoke-logcat.txt | tail -10
