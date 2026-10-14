@@ -12,7 +12,10 @@
 | GM_* 兼容 | `GM_getValue/setValue/deleteValue/listValues/addStyle/xmlhttpRequest`，并预留新版 `GM.*` 命名空间 |
 | 跨域请求 | `GM_xmlhttpRequest` 走原生 HttpURLConnection（自动带 WebView 的 Cookie），不受页面 CORS 限制 |
 | 下载落地 | http(s) 走系统 DownloadManager；blob: 由页面读成 base64 交原生写入 `Download/` |
+| **播放全屏** | 壳实现了 `onShowCustomView/onHideCustomView`：站点播放器的全屏按钮真的能用了（横屏 + 沉浸式 + 常亮） |
+| **播放增强** | 播放器右上角工具条：全屏／网页全屏／影院／画中画／倍速；视频未就绪时按 16:9 兜底，不再出现被压扁的横条 |
 | 多入口 | 菜单「切换入口地址」在主站与镜像域名间切换 |
+| 深链打开 | `adb shell am start -n com.haijiao.shell/.MainActivity --es url "https://haijiao.com/video/watch?id=9624"` |
 | 配置外置 | `Download/config.json` 或 `/sdcard/Android/data/com.haijiao.shell/files/config.json` 覆盖内置配置 |
 
 ## 菜单
