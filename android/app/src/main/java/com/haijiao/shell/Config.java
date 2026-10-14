@@ -30,6 +30,7 @@ public class Config {
     public boolean autoUpdate = true;
     public int checkHours = 6;
     public String userAgent = "";
+    public boolean autoCinema = true;
     public List<String> matchOrigins = new ArrayList<>();      // 注入范围，默认 {"*"}
     public String externalPath = "";
 
@@ -43,6 +44,7 @@ public class Config {
         if (o.has("userAgent")) c.userAgent = o.optString("userAgent", c.userAgent);
         if (o.has("autoUpdate")) c.autoUpdate = o.optBoolean("autoUpdate", c.autoUpdate);
         if (o.has("checkHours")) c.checkHours = o.optInt("checkHours", c.checkHours);
+        if (o.has("autoCinema")) c.autoCinema = o.optBoolean("autoCinema", c.autoCinema);
         JSONArray alts = o.optJSONArray("alternates");
         if (alts != null) {
             List<String[]> list = new ArrayList<>();

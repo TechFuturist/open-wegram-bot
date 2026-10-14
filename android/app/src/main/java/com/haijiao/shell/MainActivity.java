@@ -6,6 +6,7 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
@@ -26,6 +29,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebStorage;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -65,6 +69,10 @@ public class MainActivity extends Activity {
     private static final String TAG = "hj-shell";
 
     private WebView webView;
+    private FrameLayout rootLayout;
+    private View customView;
+    private WebChromeClient.CustomViewCallback customViewCallback;
+    private int originalOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
     private SharedPreferences prefs;
     private Config config;
     private GmBridge bridge;
@@ -95,11 +103,107 @@ public class MainActivity extends Activity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
+        rootLayout = new FrameLayout(this);
         webView = new WebView(this);
-        setContentView(webView, new ViewGroup.LayoutParams(
+        rootLayout.addView(webView, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        setContentView(rootLayout, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setupWebView();
+        handleIntent(getIntent());
         loadScriptThenStart(false);
+    }
+
+    /** 支持从外部直接打开某个地址：am start --es url "https://..." */
+    private void handleIntent(android.content.Intent intent) {
+        if (intent == null) return;
+        String u = intent.getStringExtra("url");
+        if (u != null && !u.isEmpty()) {
+            config.startUrl = u;
+            shellLog("按 intent 打开：" + u);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(android.content.Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        String u = intent == null ? null : intent.getStringExtra("url");
+        if (u != null && !u.isEmpty()) {
+            config.startUrl = u;
+            shellLog("按 intent 打开：" + u);
+            webView.loadUrl(u);
+        }
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* 全屏接管（HTML5 全屏 / 视频全屏都要宿主实现，否则按了没反应）        */
+    /* ------------------------------------------------------------------ */
+
+    private void applyImmersive(boolean on) {
+        try {
+            Window w = getWindow();
+            if (on) {
+                w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    w.setDecorFitsSystemWindows(false);
+                    android.view.WindowInsetsController c = w.getInsetsController();
+                    if (c != null) {
+                        c.hide(android.view.WindowInsets.Type.systemBars());
+                        c.setSystemBarsBehavior(android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+                    }
+                } else {
+                    w.getDecorView().setSystemUiVisibility(
+                            View.SYSTEM_UI_FLAG_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                }
+            } else {
+                w.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    w.setDecorFitsSystemWindows(true);
+                    android.view.WindowInsetsController c = w.getInsetsController();
+                    if (c != null) c.show(android.view.WindowInsets.Type.systemBars());
+                } else {
+                    w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                }
+            }
+        } catch (Exception e) {
+            shellLog("沉浸式切换失败：" + e.getMessage());
+        }
+    }
+
+    private void enterFullscreenView(View view, WebChromeClient.CustomViewCallback callback) {
+        if (customView != null) {
+            if (callback != null) callback.onCustomViewHidden();
+            return;
+        }
+        customView = view;
+        customViewCallback = callback;
+        try { originalOrientation = getRequestedOrientation(); } catch (Exception ignored) { }
+        rootLayout.addView(customView, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        webView.setVisibility(View.GONE);
+        try { setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE); } catch (Exception ignored) { }
+        applyImmersive(true);
+        shellLog("进入全屏（宿主接管）");
+    }
+
+    private void exitFullscreenView() {
+        if (customView == null) return;
+        try { rootLayout.removeView(customView); } catch (Exception ignored) { }
+        customView = null;
+        webView.setVisibility(View.VISIBLE);
+        if (customViewCallback != null) {
+            try { customViewCallback.onCustomViewHidden(); } catch (Exception ignored) { }
+            customViewCallback = null;
+        }
+        try { setRequestedOrientation(originalOrientation); } catch (Exception ignored) { }
+        applyImmersive(false);
+        shellLog("退出全屏");
     }
 
     /* ------------------------------------------------------------------ */
@@ -168,6 +272,21 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public void onShowCustomView(View view, CustomViewCallback callback) {
+                enterFullscreenView(view, callback);
+            }
+
+            @Override
+            public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
+                enterFullscreenView(view, callback);
+            }
+
+            @Override
+            public void onHideCustomView() {
+                exitFullscreenView();
+            }
+
+            @Override
             public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, android.os.Message resultMsg) {
                 // target=_blank 一律在本窗口打开，保证注入继续生效
                 WebView.HitTestResult r = view.getHitTestResult();
@@ -208,7 +327,7 @@ public class MainActivity extends Activity {
         return set;
     }
 
-    /** 把 shim + 用户脚本注册成 document-start 注入 */
+    /** 把 shim + 用户脚本 + 播放增强层注册成 document-start 注入 */
     private void applyInjection(String userScript) {
         String shim;
         try {
@@ -217,7 +336,13 @@ public class MainActivity extends Activity {
             shim = "";
             shellLog("gm-shim.js 读取失败：" + e.getMessage());
         }
-        String full = shim + "\n;\n" + userScript;
+        String enhancer = "";
+        try {
+            enhancer = new String(Config.readAll(getAssets().open("enhancer.js")), StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            shellLog("enhancer.js 读取失败：" + e.getMessage());
+        }
+        String full = shim + "\n;\n" + userScript + (enhancer.isEmpty() ? "" : ("\n;\n" + enhancer));
         if (documentStartSupported) {
             try {
                 if (scriptHandler != null) scriptHandler.remove();
@@ -576,13 +701,14 @@ public class MainActivity extends Activity {
     public String statusJson() {
         try {
             JSONObject o = new JSONObject();
-            o.put("shellVersion", "1.0.0-android");
+            o.put("shellVersion", "1.0.1-android");
             o.put("scriptVersion", scriptVersion);
             o.put("scriptSource", scriptSource);
             o.put("patched", scriptPatched);
             o.put("patchStrategy", patchStrategy);
             o.put("accountUser", config.accountUser);
             o.put("documentStart", documentStartSupported);
+            o.put("autoCinema", config.autoCinema);
             return o.toString();
         } catch (Exception e) {
             return "{}";
@@ -601,9 +727,15 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView != null && webView.canGoBack()) {
-            webView.goBack();
-            return true;
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (customView != null) {   // 全屏中先退全屏
+                exitFullscreenView();
+                return true;
+            }
+            if (webView != null && webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            }
         }
         return super.onKeyDown(keyCode, event);
     }

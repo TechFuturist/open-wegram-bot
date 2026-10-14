@@ -131,6 +131,8 @@
     };
 
     window.unsafeWindow = window;
+    window.__hjShellLog = function (msg) { try { N.log(String(msg)); } catch (e) { } };
+    window.__hjShellConfig = {};
     window.__hjShell = {
         壳: 'haijiao-shell 1.0.0-android',
         注入时间: new Date().toLocaleString('zh-CN', { hour12: false })
@@ -141,6 +143,7 @@
         window.__hjShell.脚本来源 = info.scriptSource;
         window.__hjShell.凭据注入 = info.patched ? ('成功 / ' + info.patchStrategy) : ('未生效 / ' + info.patchStrategy);
         window.GM.info.script.version = info.scriptVersion;
+        window.__hjShellConfig.autoCinema = info.autoCinema !== false;
     } catch (e) { }
 
     // blob 下载回传通道
