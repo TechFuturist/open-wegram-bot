@@ -87,9 +87,18 @@ jobs:
             yes | sdkmanager --licenses >/dev/null 2>&1
             sdkmanager "platform-tools" "emulator" "system-images;android-30;default;x86_64" 2>&1 | tail -3
             echo "== 创建 AVD =="
+            export ANDROID_USER_HOME="$HOME/.android"
+            export ANDROID_AVD_HOME="$HOME/.android/avd"
+            mkdir -p "$ANDROID_AVD_HOME"
             echo no | avdmanager create avd -n smoke -k "system-images;android-30;default;x86_64" -d pixel_2 --force 2>&1 | tail -3
+            echo "-- AVD 目录 --"; ls -la "$ANDROID_AVD_HOME" 2>/dev/null
+            echo "-- avdmanager list --"; avdmanager list avd 2>&1 | head -12
+            echo "-- 全盘找 avd --"; find "$HOME" /root /usr/local/lib/android -maxdepth 5 -name "*.avd" -o -maxdepth 5 -name "smoke.ini" 2>/dev/null | head -10
             echo "== 启动模拟器 =="
-            nohup "$ANDROID_HOME/emulator/emulator" -avd smoke -no-window -no-audio -no-boot-anim \
+            export ANDROID_AVD_HOME="$HOME/.android/avd"
+            export ANDROID_USER_HOME="$HOME/.android"
+            nohup env ANDROID_AVD_HOME="$ANDROID_AVD_HOME" ANDROID_USER_HOME="$ANDROID_USER_HOME" \
+              "$ANDROID_HOME/emulator/emulator" -avd smoke -no-window -no-audio -no-boot-anim \
               -no-snapshot -gpu swiftshader_indirect -memory 3072 -cores 2 > dist/emulator.log 2>&1 &
             EMU_PID=$!
             echo "emulator pid=$EMU_PID"
