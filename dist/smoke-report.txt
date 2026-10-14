@@ -18,7 +18,7 @@ Version 37.0.1-15733141
 Installed as /usr/local/lib/android/sdk/platform-tools/adb
 Running on Linux 6.17.0-1022-azure (x86_64)
 == KVM ==
-crw-rw---- 1 root kvm 10, 232 Oct 14 10:52 /dev/kvm
+crw-rw---- 1 root kvm 10, 232 Oct 14 11:00 /dev/kvm
 == 安装系统镜像 ==
 yes: standard output: Broken pipe
 Loading package information...                                                  Loading local repository...                                                     [                                       ] 3% Loading local repository...        [                                       ] 3% Fetch remote repository...         [=                                      ] 3% Fetch remote repository...         [=                                      ] 4% Fetch remote repository...         [=                                      ] 5% Fetch remote repository...         [==                                     ] 5% Fetch remote repository...         [==                                     ] 6% Fetch remote repository...         [==                                     ] 7% Fetch remote repository...         [==                                     ] 7% Computing updates...               [===                                    ] 8% Computing updates...               [===                                    ] 10% Computing updates...              [===                                    ] 10% Installing Android Emulator       [===                                    ] 10% Downloading emulator-linux_x64-164[====                                   ] 10% Downloading emulator-linux_x64-164[====                                   ] 11% Downloading emulator-linux_x64-164[====                                   ] 12% Downloading emulator-linux_x64-164[=====                                  ] 13% Downloading emulator-linux_x64-164[=====                                  ] 14% Downloading emulator-linux_x64-164[=====                                  ] 15% Downloading emulator-linux_x64-164[======                                 ] 15% Downloading emulator-linux_x64-164[======                                 ] 16% Downloading emulator-linux_x64-164[======                                 ] 17% Downloading emulator-linux_x64-164[=======                                ] 18% Downloading emulator-linux_x64-164[=======                                ] 19% Downloading emulator-linux_x64-164[=======                                ] 20% Downloading emulator-linux_x64-164[========                               ] 20% Downloading emulator-linux_x64-164[========                               ] 21% Downloading emulator-linux_x64-164[========                               ] 21% Unzipping...                      [========                               ] 21% Unzipping... emulator/            [========                               ] 21% Unzipping... emulator/resources/  [========                               ] 21% Unzipping... emulator/qsn         [========                               ] 21% Unzipping... emulator/emulator    [========                               ] 21% Unzipping... emulator/netsimd     [========                               ] 22% Unzipping... emulator/netsimd     [========                               ] 22% Unzipping... emulator/bin64/      [========                               ] 22% Unzipping... emulator/qemu/       [========                               ] 22% Unzipping... emulator/NOTICE.txt  [========                               ] 22% Unzipping... emulator/crashpad_han[========                               ] 22% Unzipping... emulator/source.prope[========                               ] 22% Unzipping... emulator/nimble_bridg[========                               ] 22% Unzipping... emulator/LICENSE     [========                               ] 22% Unzipping... emulator/lib/        [========                               ] 22% Unzipping... emulator/qemu-img    [========                               ] 22% Unzipping... emulator/include/    [========                               ] 22% Unzipping... emulator/NOTICE.csv  [========                               ] 22% Unzipping... emulator/lib64/      [========                               ] 22% Unzipping... emulator/emulator-che[========                               ] 22% Unzipping... emulator/crashreport [========                               ] 22% Unzipping... emulator/mksdcard    [========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/sk[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/po[========                               ] 22% Unzipping... emulator/resources/ma[=========                              ] 23% Unzipping... emulator/resources/ma[=========                              ] 23% Unzipping... emulator/resources/sk[=========                              ] 23% Unzipping... emulator/resources/ma[=========                              ] 23% Unzipping... emulator/bin64/e2fsck[=========                              ] 23% Unzipping... emulator/bin64/fsck.e[=========                              ] 23% Unzipping... emulator/bin64/tune2f[=========                              ] 23% Unzipping... emulator/bin64/resize[=========                              ] 23% Unzipping... emulator/bin64/mkfs.e[=========                              ] 23% Unzipping... emulator/qemu/linux-x[=========                              ] 24% Unzipping... emulator/qemu/linux-x[=========                              ] 25% Unzipping... emulator/qemu/linux-x[==========                             ] 25% Unzipping... emulator/qemu/linux-x[==========                             ] 25% Unzipping... emulator/lib/emulator[==========                             ] 25% Unzipping... emulator/lib/rtc_serv[==========                             ] 25% Unzipping... emulator/lib/advanced[==========                             ] 25% Unzipping... emulator/lib/cmake/  [==========                             ] 25% Unzipping... emulator/lib/emulator[==========                             ] 25% Unzipping... emulator/lib/control_[==========                             ] 25% Unzipping... emulator/lib/emulated[==========                             ] 25% Unzipping... emulator/lib/rtc_serv[==========                             ] 25% Unzipping... emulator/lib/emu-orig[==========                             ] 25% Unzipping... emulator/lib/hardware[==========                             ] 25% Unzipping... emulator/lib/pkgconfi[==========                             ] 25% Unzipping... emulator/lib/pc-bios/[==========                             ] 25% Unzipping... emulator/lib/snapshot[==========                             ] 25% Unzipping... emulator/lib/adb_serv[==========                             ] 25% Unzipping... emulator/lib/hostapd.[==========                             ] 25% Unzipping... emulator/lib/grpc_end[==========                             ] 25% Unzipping... emulator/lib/ca-bundl[==========                             ] 25% Unzipping... emulator/lib/ui_contr[==========                             ] 25% Unzipping... emulator/lib/snapshot[==========                             ] 25% Unzipping... emulator/lib/ice_conf[==========                             ] 25% Unzipping... emulator/lib/libflatb[==========                             ] 26% Unzipping... emulator/lib/libflatb[==========                             ] 26% Unzipping... emulator/lib/emulator[==========                             ] 26% Unzipping... emulator/lib/waterfal[==========                             ] 26% Unzipping... emulator/lib/emulated[==========                             ] 26% Unzipping... emulator/lib/cmake/fl[==========                             ] 26% Unzipping... emulator/lib/pkgconfi[==========                             ] 26% Unzipping... emulator/lib/pc-bios/[==========                             ] 26% Unzipping... emulator/include/flat[==========                             ] 26% Unzipping... emulator/lib64/libgli[==========                             ] 26% Unzipping... emulator/lib64/libpro[==========                             ] 26% Unzipping... emulator/lib64/qt/   [==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libgfx[==========                             ] 26% Unzipping... emulator/lib64/gles_l[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/vulkan[==========                             ] 26% Unzipping... emulator/lib64/gles_s[==========                             ] 26% Unzipping... emulator/lib64/libemu[==========                             ] 26% Unzipping... emulator/lib64/libpro[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libtcm[==========                             ] 26% Unzipping... emulator/lib64/libima[==========                             ] 26% Unzipping... emulator/lib64/libc++[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libabs[==========                             ] 26% Unzipping... emulator/lib64/gles_a[==========                             ] 26% Unzipping... emulator/lib64/libsha[==========                             ] 26% Unzipping... emulator/lib64/libc++[==========                             ] 26% Unzipping... emulator/lib64/qt/res[==========                             ] 26% Unzipping... emulator/lib64/qt/lib[==========                             ] 26% Unzipping... emulator/lib64/qt/tra[==========                             ] 26% Unzipping... emulator/lib64/qt/plu[==========                             ] 26% Unzipping... emulator/lib64/qt/res[==========                             ] 27% Unzipping... emulator/lib64/qt/res[==========                             ] 27% Unzipping... emulator/lib64/qt/lib[===========                            ] 28% Unzipping... emulator/lib64/qt/lib[===========                            ] 29% Unzipping... emulator/lib64/qt/lib[===========                            ] 30% Unzipping... emulator/lib64/qt/lib[============                           ] 30% Unzipping... emulator/lib64/qt/lib[============                           ] 30% Unzipping... emulator/lib64/qt/tra[============                           ] 30% Unzipping... emulator/lib64/qt/plu[============                           ] 30% Unzipping... emulator/lib64/gles_l[============                           ] 31% Unzipping... emulator/lib64/gles_l[============                           ] 31% Unzipping... emulator/lib64/vulkan[============                           ] 32% Unzipping... emulator/lib64/vulkan[============                           ] 32% Unzipping... emulator/lib64/gles_s[============                           ] 32% Unzipping... emulator/lib64/gles_a[=============                          ] 33% Unzipping... emulator/lib64/gles_a[=====================                  ] 55% Unzipping... emulator/lib64/gles_a[=====================                  ] 55% Installing Intel x86_64 Atom Syste[=====================                  ] 55% Downloading x86_64-30_r11.zip... e[======================                 ] 55% Downloading x86_64-30_r11.zip... e[======================                 ] 56% Downloading x86_64-30_r11.zip... e[======================                 ] 57% Downloading x86_64-30_r11.zip... e[=======================                ] 58% Downloading x86_64-30_r11.zip... e[=======================                ] 59% Downloading x86_64-30_r11.zip... e[=======================                ] 60% Downloading x86_64-30_r11.zip... e[========================               ] 60% Downloading x86_64-30_r11.zip... e[========================               ] 61% Downloading x86_64-30_r11.zip... e[========================               ] 62% Downloading x86_64-30_r11.zip... e[=========================              ] 63% Downloading x86_64-30_r11.zip... e[=========================              ] 64% Downloading x86_64-30_r11.zip... e[=========================              ] 65% Downloading x86_64-30_r11.zip... e[==========================             ] 65% Downloading x86_64-30_r11.zip... e[==========================             ] 66% Downloading x86_64-30_r11.zip... e[==========================             ] 66% Unzipping... emulator/lib64/gles_a[==========================             ] 66% Unzipping... x86_64/VerifiedBootPa[==========================             ] 66% Unzipping... x86_64/advancedFeatur[==========================             ] 66% Unzipping... x86_64/build.prop    [==========================             ] 66% Unzipping... x86_64/encryptionkey.[==========================             ] 66% Unzipping... x86_64/kernel-ranchu [==========================             ] 67% Unzipping... x86_64/kernel-ranchu [==========================             ] 67% Unzipping... x86_64/ramdisk.img   [==========================             ] 67% Unzipping... x86_64/source.propert[==========================             ] 67% Unzipping... x86_64/system.img    [===========================            ] 68% Unzipping... x86_64/system.img    [===========================            ] 69% Unzipping... x86_64/system.img    [===========================            ] 70% Unzipping... x86_64/system.img    [============================           ] 70% Unzipping... x86_64/system.img    [============================           ] 71% Unzipping... x86_64/system.img    [============================           ] 72% Unzipping... x86_64/system.img    [=============================          ] 73% Unzipping... x86_64/system.img    [=============================          ] 74% Unzipping... x86_64/system.img    [=============================          ] 75% Unzipping... x86_64/system.img    [==============================         ] 75% Unzipping... x86_64/system.img    [==============================         ] 76% Unzipping... x86_64/system.img    [==============================         ] 77% Unzipping... x86_64/system.img    [==============================         ] 77% Unzipping... x86_64/userdata.img  [==============================         ] 77% Unzipping... x86_64/vendor.img    [==============================         ] 77% Unzipping... x86_64/data/local.pro[==============================         ] 77% Unzipping... x86_64/data/misc/apns[==============================         ] 77% Unzipping... x86_64/data/misc/emul[==============================         ] 77% Unzipping... x86_64/data/misc/gcec[==============================         ] 77% Unzipping... x86_64/data/misc/wifi[==============================         ] 77% Unzipping... x86_64/data/system/di[==============================         ] 78% Unzipping... x86_64/data/system/di[=======================================] 100% Unzipping... x86_64/data/system/d
@@ -28,10 +28,10 @@ Loading local repository...                                                     
 Auto-selecting single ABI x86_64
 -- AVD 目录 --
 total 16
-drwxr-xr-x 3 runner runner 4096 Oct 14 10:54 .
-drwxr-xr-x 3 runner runner 4096 Oct 14 10:54 ..
-drwxr-xr-x 2 runner runner 4096 Oct 14 10:54 smoke.avd
--rw-r--r-- 1 runner runner  105 Oct 14 10:54 smoke.ini
+drwxr-xr-x 3 runner runner 4096 Oct 14 11:03 .
+drwxr-xr-x 3 runner runner 4096 Oct 14 11:03 ..
+drwxr-xr-x 2 runner runner 4096 Oct 14 11:03 smoke.avd
+-rw-r--r-- 1 runner runner  105 Oct 14 11:03 smoke.ini
 -- avdmanager list --
 Available Android Virtual Devices:
     Name: smoke
@@ -44,7 +44,7 @@ Available Android Virtual Devices:
 /home/runner/.android/avd/smoke.avd
 /home/runner/.android/avd/smoke.ini
 == 启动模拟器 ==
-emulator pid=2987
+emulator pid=3253
 [+] 开机完成（第 2 轮，约 30 秒）
 == 模拟器日志尾 ==
 INFO         |   qemu.gles=1
@@ -62,10 +62,10 @@ INFO         |   qemu.wifi=1
 INFO         | Monitoring duration of emulator setup.
 WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port
 INFO         | Using security allow list from: /usr/local/lib/android/sdk/emulator/lib/emulator_access.json
-INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/2987/jwks/d8539d75-eb9d-4596-adbb-2bc01638b50a/active.jwk
-INFO         | Scanning /run/user/1001/avd/running/2987/jwks/d8539d75-eb9d-4596-adbb-2bc01638b50a for jwk keys.
+INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/3253/jwks/ecceb895-e50b-4f02-b511-164e689f042f/active.jwk
+INFO         | Scanning /run/user/1001/avd/running/3253/jwks/ecceb895-e50b-4f02-b511-164e689f042f for jwk keys.
 INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
-INFO         | Advertising in: /run/user/1001/avd/running/pid_2987.ini
+INFO         | Advertising in: /run/user/1001/avd/running/pid_3253.ini
 INFO         | Setting display: 0 configuration to: 1080x1920, dpi: 420x420 
 INFO         | setDisplayActiveConfig: id:0, 1080x1920
 INFO         | emulatorSetupEnvironment: Environment scene is not required
@@ -84,8 +84,8 @@ Starting: Intent { cmp=com.haijiao.shell/.MainActivity }
 Status: ok
 LaunchState: COLD
 Activity: com.haijiao.shell/.MainActivity
-TotalTime: 1654
-WaitTime: 1721
+TotalTime: 1836
+WaitTime: 1845
 Complete
 == 打开视频播放页 ==
 Starting: Intent { cmp=com.haijiao.shell/.MainActivity (has extras) }
@@ -94,7 +94,7 @@ Status: ok
 LaunchState: UNKNOWN (0)
 Activity: com.haijiao.shell/.MainActivity
 TotalTime: 0
-WaitTime: 2
+WaitTime: 6
 Complete
 == 增强层验证：直接打开一个 mp4（满屏 video 元素）==
 Starting: Intent { cmp=com.haijiao.shell/.MainActivity (has extras) }
@@ -106,66 +106,63 @@ TotalTime: 0
 WaitTime: 7
 Complete
 == 点「全屏」按钮（实测工具条在 y≈810，全屏键 x≈310）==
-== 再点「网页全屏」（x≈435）==
+== 再点一次「全屏」键退出全屏 ==
 == 全屏日志 ==
-10-14 10:57:34.135 I/hj-shell( 1957): 进入全屏（宿主接管）
+10-14 11:06:27.855 I/hj-shell( 1919): 进入全屏（宿主接管）
 == hj-shell ==
-10-14 10:54:48.734 I/hj-shell( 1957): 已用兜底方式注入脚本
-10-14 10:54:48.804 I/hj-shell( 1957): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
-10-14 10:54:48.813 I/hj-shell( 1957): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
-10-14 10:54:48.814 I/hj-shell( 1957): [页面] [海角脚本] 当前是站点入口警告页：只准备登录态，不自己刷新（马上会跳到 /home，凭据跟着走）
-10-14 10:54:48.815 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:54:49.538 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/
-10-14 10:54:50.133 I/hj-shell( 1957): [页面] [海角脚本] 站点入口是 canvas 画的成人警告页：按它自己的按钮位置点一次（自动确认）（矩形 136,349 140×49，填充率 1，画布上共 2 处橙色区域）
-10-14 10:54:50.325 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:50.505 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:50.664 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:50.819 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:51.442 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:51.443 I/hj-shell( 1957): [页面] [海角脚本] 警告页未能定位到按钮（派发的点击没让页面跳转（可能没落在它记的矩形里）），按其自身出口直接进入 /home
-10-14 10:54:51.443 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:51.855 I/hj-shell( 1957): 已用兜底方式注入脚本
-10-14 10:54:51.875 I/hj-shell( 1957): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
-10-14 10:54:51.893 I/hj-shell( 1957): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
-10-14 10:54:51.896 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:54:51.898 I/hj-shell( 1957): [脚本] 播放增强层已加载
-10-14 10:54:52.994 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:53.419 I/hj-shell( 1957): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
-10-14 10:54:54.731 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/home
-10-14 10:54:55.507 I/hj-shell( 1957): [页面] [海角脚本] GIF 补图 Worker 池已就绪 ×3（动图将走独立线程解码）
-10-14 10:54:55.841 I/hj-shell( 1957): [页面] [海角脚本] 已提示「当前未配置账号」（自动打开）
-10-14 10:55:48.509 I/hj-shell( 1957): 按 intent 打开：https://haijiao.com/video/watch?id=9624
-10-14 10:55:48.877 I/hj-shell( 1957): 已用兜底方式注入脚本
-10-14 10:55:48.970 I/hj-shell( 1957): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
-10-14 10:55:48.976 I/hj-shell( 1957): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
-10-14 10:55:48.979 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:55:48.982 I/hj-shell( 1957): [脚本] 播放增强层已加载
-10-14 10:55:49.841 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/video/watch?id=9624
-10-14 10:55:50.268 I/hj-shell( 1957): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
-10-14 10:55:50.387 I/hj-shell( 1957): 页面加载完成：https://haijiao.com/video/watch?id=9624
-10-14 10:56:19.844 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:56:48.597 I/hj-shell( 1957): 按 intent 打开：https://www.w3schools.com/html/mov_bbb.mp4
-10-14 10:56:48.866 I/hj-shell( 1957): 已用兜底方式注入脚本
-10-14 10:56:48.889 I/hj-shell( 1957): 页面加载完成：https://www.w3schools.com/html/mov_bbb.mp4
-10-14 10:56:48.934 I/hj-shell( 1957): [脚本] 播放增强层已加载
-10-14 10:56:50.119 I/hj-shell( 1957): [脚本] 播放增强：按真实比例 1.8182 校正播放器
-10-14 10:57:34.135 I/hj-shell( 1957): 进入全屏（宿主接管）
+10-14 11:03:40.115 I/hj-shell( 1919): document-start 注入支持：false（WebView PackageInfo{710f121 com.android.webview}）
+10-14 11:03:40.470 I/hj-shell( 1919): 脚本下载失败：https://update.greasyfork.org/scripts/583742/m3u8%E6%8F%90%E5%8F%96+%E5%8E%BB%E5%B9%BF%E5%91%8A+%E8%87%AA%E5%8A%A8%E5%B1%95%E5%BC%80%E5%AE%8C%E6%95%B4%E5%B8%96%E6%96%87+%E6%8B%A6%E6%88%AA%E7%99%BB%E5%BD%95%E5%BC%B9%E7%AA%97+TS%E4%B8%8B%E8%BD%BD.user.js → Failed to connect to update.greasyfork.org/2600:3c01::f03c:95ff:fee3:1156:443
+10-14 11:03:41.384 I/hj-shell( 1919): 脚本已更新到 v7.15.0（来源 https://greasyfork.org/scripts/583742/code/m3u8%E6%8F%90%E5%8F%96%2B%E5%8E%BB%E5%B9%BF%E5%91%8A%2B%E8%87%AA%E5%8A%A8%E5%B1%95%E5%BC%80%E5%AE%8C%E6%95%B4%E8%B4%B4%E6%96%87%2B%E6%8B%A6%E6%88%AA%E7%99%BB%E5%BD%95%E5%BC%B9%E7%AA%97%2BTS%E4%B8%8B%E8%BD%BD.user.js）
+10-14 11:03:41.393 I/hj-shell( 1919): 脚本就绪：v7.15.0 来源=远端缓存 凭据注入=未生效
+10-14 11:03:41.422 I/hj-shell( 1919): WebView 不支持 document-start，改用页面开始注入
+10-14 11:03:41.422 I/hj-shell( 1919): 打开：https://haijiao.com/
+10-14 11:03:42.082 I/hj-shell( 1919): 已用兜底方式注入脚本
+10-14 11:03:42.168 I/hj-shell( 1919): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
+10-14 11:03:42.180 I/hj-shell( 1919): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
+10-14 11:03:42.180 I/hj-shell( 1919): [页面] [海角脚本] 当前是站点入口警告页：只准备登录态，不自己刷新（马上会跳到 /home，凭据跟着走）
+10-14 11:03:42.181 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:03:42.670 I/hj-shell( 1919): 页面加载完成：https://haijiao.com/
+10-14 11:03:43.286 I/hj-shell( 1919): [页面] [海角脚本] 站点入口是 canvas 画的成人警告页：按它自己的按钮位置点一次（自动确认）（矩形 136,349 140×49，填充率 1，画布上共 2 处橙色区域）
+10-14 11:03:43.444 I/hj-shell( 1919): 已用兜底方式注入脚本
+10-14 11:03:43.464 I/hj-shell( 1919): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
+10-14 11:03:43.474 I/hj-shell( 1919): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
+10-14 11:03:43.475 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:03:44.254 I/hj-shell( 1919): 页面加载完成：https://haijiao.com/home
+10-14 11:03:44.546 I/hj-shell( 1919): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
+10-14 11:03:46.312 I/hj-shell( 1919): 页面加载完成：https://haijiao.com/home
+10-14 11:03:47.052 I/hj-shell( 1919): [页面] [海角脚本] GIF 补图 Worker 池已就绪 ×3（动图将走独立线程解码）
+10-14 11:03:47.052 I/hj-shell( 1919): [页面] [海角脚本] 已提示「当前未配置账号」（自动打开）
+10-14 11:04:42.193 I/hj-shell( 1919): 按 intent 打开：https://haijiao.com/video/watch?id=9624
+10-14 11:04:42.532 I/hj-shell( 1919): 已用兜底方式注入脚本
+10-14 11:04:42.578 I/hj-shell( 1919): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
+10-14 11:04:42.589 I/hj-shell( 1919): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
+10-14 11:04:42.593 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:04:42.597 I/hj-shell( 1919): [脚本] 播放增强层已加载
+10-14 11:04:43.281 I/hj-shell( 1919): 页面加载完成：https://haijiao.com/video/watch?id=9624
+10-14 11:04:43.619 I/hj-shell( 1919): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
+10-14 11:04:43.807 I/hj-shell( 1919): 页面加载完成：https://haijiao.com/video/watch?id=9624
+10-14 11:05:13.283 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:05:42.318 I/hj-shell( 1919): 按 intent 打开：https://www.w3schools.com/html/mov_bbb.mp4
+10-14 11:05:42.581 I/hj-shell( 1919): 已用兜底方式注入脚本
+10-14 11:05:42.604 I/hj-shell( 1919): 页面加载完成：https://www.w3schools.com/html/mov_bbb.mp4
+10-14 11:05:42.655 I/hj-shell( 1919): [脚本] 播放增强层已加载
+10-14 11:05:43.839 I/hj-shell( 1919): [脚本] 播放增强：按真实比例 1.8182 校正播放器
+10-14 11:06:27.855 I/hj-shell( 1919): 进入全屏（宿主接管）
 == 页面 ==
-10-14 10:54:48.804 I/hj-shell( 1957): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
-10-14 10:54:48.813 I/hj-shell( 1957): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
-10-14 10:54:48.814 I/hj-shell( 1957): [页面] [海角脚本] 当前是站点入口警告页：只准备登录态，不自己刷新（马上会跳到 /home，凭据跟着走）
-10-14 10:54:48.815 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:54:50.133 I/hj-shell( 1957): [页面] [海角脚本] 站点入口是 canvas 画的成人警告页：按它自己的按钮位置点一次（自动确认）（矩形 136,349 140×49，填充率 1，画布上共 2 处橙色区域）
-10-14 10:54:51.443 I/hj-shell( 1957): [页面] [海角脚本] 警告页未能定位到按钮（派发的点击没让页面跳转（可能没落在它记的矩形里）），按其自身出口直接进入 /home
-10-14 10:54:51.875 I/hj-shell( 1957): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
-10-14 10:54:51.893 I/hj-shell( 1957): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
-10-14 10:54:51.896 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:54:53.419 I/hj-shell( 1957): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
-10-14 10:54:55.507 I/hj-shell( 1957): [页面] [海角脚本] GIF 补图 Worker 池已就绪 ×3（动图将走独立线程解码）
-10-14 10:54:55.841 I/hj-shell( 1957): [页面] [海角脚本] 已提示「当前未配置账号」（自动打开）
-10-14 10:55:48.970 I/hj-shell( 1957): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
-10-14 10:55:48.976 I/hj-shell( 1957): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
-10-14 10:55:48.979 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
-10-14 10:55:50.268 I/hj-shell( 1957): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
-10-14 10:56:19.844 I/hj-shell( 1957): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:03:42.168 I/hj-shell( 1919): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
+10-14 11:03:42.180 I/hj-shell( 1919): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
+10-14 11:03:42.180 I/hj-shell( 1919): [页面] [海角脚本] 当前是站点入口警告页：只准备登录态，不自己刷新（马上会跳到 /home，凭据跟着走）
+10-14 11:03:42.181 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:03:43.286 I/hj-shell( 1919): [页面] [海角脚本] 站点入口是 canvas 画的成人警告页：按它自己的按钮位置点一次（自动确认）（矩形 136,349 140×49，填充率 1，画布上共 2 处橙色区域）
+10-14 11:03:43.464 I/hj-shell( 1919): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
+10-14 11:03:43.474 I/hj-shell( 1919): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
+10-14 11:03:43.475 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:03:44.546 I/hj-shell( 1919): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
+10-14 11:03:47.052 I/hj-shell( 1919): [页面] [海角脚本] GIF 补图 Worker 池已就绪 ×3（动图将走独立线程解码）
+10-14 11:03:47.052 I/hj-shell( 1919): [页面] [海角脚本] 已提示「当前未配置账号」（自动打开）
+10-14 11:04:42.578 I/hj-shell( 1919): [页面] [海角脚本 v7.15.0] 已启动并接管本页（域名 haijiao.com，内置可信域名，无需询问）。看不到本行说明脚本没被注入，见 __hjSeen / 诊断片段。
+10-14 11:04:42.589 I/hj-shell( 1919): [页面] [海角脚本] 观影券绕过：已接管 1 个 XMLHttpRequest 原型（取址请求将换址）
+10-14 11:04:42.593 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
+10-14 11:04:43.619 I/hj-shell( 1919): [页面] [海角脚本] 已压制「需要更高等级VIP才能查看回复」浮层，并补上回复区的失败出口（清 loading/finished/skeletonLoading；接口与其它分支逻辑不变）
+10-14 11:05:13.283 I/hj-shell( 1919): [页面] [海角脚本] 没有配置账号，无法登录换址：未配置账号：服务端只给 30 秒试看（付费帖），免费视频连试看都没有（脚本里填上自己的账号即可）
 == 崩溃 ==
