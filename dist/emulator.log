@@ -15,7 +15,7 @@ INFO         |      Ok: System requirements to run avd: `smoke` are met
 WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
 WARNING      | FeatureControl is requesting a non existing feature.
 ERROR        | Unable to connect to adb daemon on port: 5037
-INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3700
+INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 3009
 INFO         | Initializing gfxstream backend
 INFO         | startOpenglesRendererImpl: gpu info
 INFO         | 
@@ -53,7 +53,7 @@ INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google Sw
 INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
 INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
 INFO         | Graphics Device Extensions N/A
-INFO         | Disabling sWARNING: cannnot unmap ptr 0x7fa473801000 as it is in the protected range from 0x7fa3b3800000 to 0x7fa473a00000
+INFO         | Disabling sWARNING: cannnot unmap ptr 0x7f8d4ae01000 as it is in the protected range from 0x7f8c8ae00000 to 0x7f8d4b000000
 parse binding feature support
 INFO         | Userspace boot properties:
 INFO         |   android.bootanim=0
@@ -86,15 +86,21 @@ INFO         |   qemu.wifi=1
 INFO         | Monitoring duration of emulator setup.
 WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port
 INFO         | Using security allow list from: /usr/local/lib/android/sdk/emulator/lib/emulator_access.json
-INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/3700/jwks/fe8080f4-ef18-4f66-a96f-53d56bbf80a6/active.jwk
-INFO         | Scanning /run/user/1001/avd/running/3700/jwks/fe8080f4-ef18-4f66-a96f-53d56bbf80a6 for jwk keys.
+INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/3009/jwks/b7bd0a1a-e978-4204-bc68-c44f1f55053a/active.jwk
+INFO         | Scanning /run/user/1001/avd/running/3009/jwks/b7bd0a1a-e978-4204-bc68-c44f1f55053a for jwk keys.
 INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
-INFO         | Advertising in: /run/user/1001/avd/running/pid_3700.ini
+INFO         | Advertising in: /run/user/1001/avd/running/pid_3009.ini
 INFO         | Setting display: 0 configuration to: 1080x1920, dpi: 420x420 
 INFO         | setDisplayActiveConfig: id:0, 1080x1920
 INFO         | emulatorSetupEnvironment: Environment scene is not required
 USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
 WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
 WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
-INFO         | Boot completed in 25834 ms
+INFO         | Boot completed in 26205 ms
 INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+dlopen "libcuda.so" failed!
+dlopen "libcuda.so" failed!
+dlopen "libcuda.so" failed!
+Failed to call cuInit, cannot use nvidia cuvid decoder for h264 stream
+[h264 @ 0x562f1d40d680] no frame!
+[h264 @ 0x562f1d40d680] no frame!
