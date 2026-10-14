@@ -18,7 +18,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
 
@@ -91,26 +91,32 @@ jobs:
             echo "== 启动模拟器 =="
             nohup "$ANDROID_HOME/emulator/emulator" -avd smoke -no-window -no-audio -no-boot-anim \
               -no-snapshot -gpu swiftshader_indirect -memory 3072 -cores 2 > dist/emulator.log 2>&1 &
-            adb wait-for-device
+            EMU_PID=$!
+            echo "emulator pid=$EMU_PID"
+            sleep 20
             for i in $(seq 1 90); do
-              b=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
-              [ "$b" = "1" ] && break
+              if ! kill -0 $EMU_PID 2>/dev/null; then echo "[!] 模拟器进程已退出（第 $i 轮）"; break; fi
+              b=$(timeout 15 adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+              if [ "$b" = "1" ]; then echo "[+] 开机完成（第 $i 轮，约 $((i*5+20)) 秒）"; break; fi
+              [ $((i % 12)) -eq 0 ] && echo "  ...等待中 $i（boot_completed='$b'）"
               sleep 5
             done
-            echo "boot_completed=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')"
-            adb devices
+            echo "== 模拟器日志尾 =="; tail -25 dist/emulator.log
+            echo "== 设备 =="; timeout 60 adb devices
+            boot=$(timeout 15 adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+            if [ "$boot" != "1" ]; then echo "[!] 模拟器未就绪，跳过装机"; ls -la dist; exit 0; fi
             echo "== 装机 =="
-            adb logcat -c 2>/dev/null
-            adb install -r -t dist/haijiao-shell.apk
+            timeout 60 adb logcat -c 2>/dev/null
+            timeout 180 adb install -r -t dist/haijiao-shell.apk
             echo "== 启动（首页） =="
-            adb shell am start -W -n com.haijiao.shell/.MainActivity
+            timeout 60 adb shell am start -W -n com.haijiao.shell/.MainActivity
             sleep 60
-            adb exec-out screencap -p > dist/smoke-01-home.png
+            timeout 60 adb exec-out screencap -p > dist/smoke-01-home.png
             echo "== 打开视频播放页 =="
-            adb shell am start -W -n com.haijiao.shell/.MainActivity --es url "https://haijiao.com/video/watch?id=9631"
+            timeout 60 adb shell am start -W -n com.haijiao.shell/.MainActivity --es url "https://haijiao.com/video/watch?id=9624"
             sleep 60
-            adb exec-out screencap -p > dist/smoke-02-watch.png
-            adb logcat -d -v time > dist/smoke-logcat.txt
+            timeout 60 adb exec-out screencap -p > dist/smoke-02-watch.png
+            timeout 60 adb logcat -d -v time > dist/smoke-logcat.txt
             echo "== hj-shell =="
             grep -a "hj-shell" dist/smoke-logcat.txt | tail -40
             echo "== 页面 =="
